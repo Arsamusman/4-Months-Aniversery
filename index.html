@@ -1,0 +1,1130 @@
+<!DOCTYPE html>
+<html lang="en" class="dark">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>Ajar & Me — Executive Luxury 4-Month Anniversary</title>
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- FontAwesome 6 -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@500;700;800&family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+    <script>
+        tailwind.config = {
+            darkMode: 'class',
+            theme: {
+                extend: {
+                    colors: {
+                        lux: {
+                            bg: '#05030A',
+                            surface: 'rgba(18, 12, 32, 0.65)',
+                            surfaceGlow: 'rgba(30, 18, 54, 0.75)',
+                            gold: '#D4AF37',
+                            goldGlow: '#FFDF00',
+                            rose: '#FF2E93',
+                            cyan: '#00F0FF',
+                            purple: '#8B5CF6'
+                        }
+                    },
+                    fontFamily: {
+                        sans: ['Plus Jakarta Sans', 'sans-serif'],
+                        serif: ['Cinzel', 'serif'],
+                        tech: ['Space Grotesk', 'sans-serif']
+                    }
+                }
+            }
+        }
+    </script>
+
+    <style>
+        body {
+            background-color: #040208;
+            color: #f8fafc;
+            overflow-x: hidden;
+            user-select: none;
+            -webkit-tap-highlight-color: transparent;
+        }
+
+        /* Executive Glassmorphism & Micro Borders */
+        .glass-box {
+            background: rgba(18, 12, 32, 0.65);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            border: 1px solid rgba(255, 46, 147, 0.18);
+            box-shadow: 0 10px 40px -10px rgba(0, 0, 0, 0.7), inset 0 0 15px rgba(255, 46, 147, 0.04);
+        }
+
+        .glass-box-gold {
+            background: rgba(24, 16, 42, 0.75);
+            backdrop-filter: blur(24px);
+            -webkit-backdrop-filter: blur(24px);
+            border: 1px solid rgba(212, 175, 55, 0.35);
+            box-shadow: 0 0 30px rgba(212, 175, 55, 0.15), inset 0 0 20px rgba(212, 175, 55, 0.08);
+        }
+
+        .glass-tab {
+            background: rgba(12, 6, 24, 0.85);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        /* Glowing Effects */
+        .text-glow-gold { text-shadow: 0 0 18px rgba(212, 175, 55, 0.7), 0 0 35px rgba(212, 175, 55, 0.3); }
+        .text-glow-rose { text-shadow: 0 0 18px rgba(255, 46, 147, 0.7), 0 0 35px rgba(255, 46, 147, 0.3); }
+        .text-glow-cyan { text-shadow: 0 0 18px rgba(0, 240, 255, 0.7), 0 0 35px rgba(0, 240, 255, 0.3); }
+
+        /* Custom Animations */
+        @keyframes subtleFloat {
+            0%, 100% { transform: translateY(0px) rotate(0deg); }
+            50% { transform: translateY(-10px) rotate(1deg); }
+        }
+        .animate-float { animation: subtleFloat 6s ease-in-out infinite; }
+
+        @keyframes pulseGlow {
+            0%, 100% { transform: scale(1); filter: drop-shadow(0 0 20px rgba(255, 46, 147, 0.5)); }
+            50% { transform: scale(1.06); filter: drop-shadow(0 0 40px rgba(0, 240, 255, 0.8)); }
+        }
+        .animate-heart-pulse { animation: pulseGlow 2.8s ease-in-out infinite; }
+
+        /* Custom Scrollbar */
+        ::-webkit-scrollbar { width: 5px; }
+        ::-webkit-scrollbar-track { background: #040208; }
+        ::-webkit-scrollbar-thumb { background: linear-gradient(#D4AF37, #FF2E93); border-radius: 99px; }
+
+        .tab-content {
+            display: none;
+            opacity: 0;
+            transform: translateY(12px);
+            transition: opacity 0.4s ease, transform 0.4s ease;
+        }
+        .tab-content.active {
+            display: block;
+            opacity: 1;
+            transform: translateY(0px);
+        }
+
+        /* 3D Envelope Animation Styles */
+        .perspective-1000 { perspective: 1000px; }
+        .transform-style-3d { transform-style: preserve-3d; }
+        
+        .envelope-wrapper {
+            position: relative;
+            width: 100%;
+            max-width: 380px;
+            height: 240px;
+            margin: 0 auto;
+            cursor: pointer;
+        }
+
+        .envelope-body {
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(135deg, #18102a, #0b0618);
+            border: 1px solid rgba(212, 175, 55, 0.4);
+            border-radius: 1rem;
+            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.6), inset 0 0 15px rgba(212, 175, 55, 0.1);
+            overflow: hidden;
+            z-index: 10;
+        }
+
+        .envelope-flap {
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 120px;
+            background: linear-gradient(180deg, #241642, #18102a);
+            border-bottom: 1px solid rgba(212, 175, 55, 0.5);
+            clip-path: polygon(0 0, 100% 0, 50% 100%);
+            transform-origin: top center;
+            transition: transform 0.8s cubic-bezier(0.4, 0, 0.2, 1);
+            z-index: 25;
+        }
+
+        .envelope-wrapper.open .envelope-flap {
+            transform: rotateX(180deg);
+            z-index: 5;
+        }
+
+        .wax-seal {
+            position: absolute;
+            top: 95px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 52px;
+            height: 52px;
+            border-radius: 50%;
+            background: radial-gradient(circle, #ff2e93, #8b0042);
+            border: 2px solid #D4AF37;
+            box-shadow: 0 0 20px rgba(255, 46, 147, 0.6), inset 0 0 10px rgba(212, 175, 55, 0.5);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #D4AF37;
+            font-size: 1.25rem;
+            z-index: 30;
+            transition: transform 0.6s ease, opacity 0.6s ease;
+            cursor: pointer;
+        }
+
+        .wax-seal:hover {
+            transform: translateX(-50%) scale(1.1);
+        }
+
+        .envelope-wrapper.open .wax-seal {
+            transform: translateX(-50%) scale(0);
+            opacity: 0;
+            pointer-events: none;
+        }
+
+        .letter-paper {
+            position: absolute;
+            inset: 15px;
+            background: rgba(12, 6, 24, 0.95);
+            border: 1px solid rgba(255, 46, 147, 0.3);
+            border-radius: 0.75rem;
+            padding: 1.25rem;
+            transform: translateY(0);
+            transition: transform 0.8s cubic-bezier(0.4, 0, 0.2, 1) 0.3s;
+            z-index: 15;
+            overflow-y: auto;
+        }
+
+        .envelope-wrapper.open .letter-paper {
+            transform: translateY(-20px);
+            z-index: 20;
+        }
+    </style>
+</head>
+<body class="min-h-screen relative font-sans text-slate-100 selection:bg-pink-500 selection:text-white pb-24 lg:pb-8">
+
+    <!-- Interactive Ambient Canvas Background -->
+    <canvas id="luxBgCanvas" class="fixed inset-0 pointer-events-none z-0"></canvas>
+
+    <!-- Header Bar -->
+    <header class="sticky top-0 z-40 w-full px-4 md:px-10 py-3.5 glass-box border-b border-pink-500/20 flex justify-between items-center">
+        <!-- Brand Title -->
+        <div class="flex items-center space-x-3 cursor-pointer" onclick="switchTab('dashboard')">
+            <div class="w-10 h-10 rounded-full bg-gradient-to-tr from-lux-gold via-lux-rose to-lux-cyan p-0.5 shadow-lg animate-pulse">
+                <div class="w-full h-full bg-slate-950 rounded-full flex items-center justify-center text-lux-gold text-sm font-serif">
+                    <i class="fa-solid fa-crown"></i>
+                </div>
+            </div>
+            <div>
+                <h1 class="text-base md:text-lg font-bold font-serif tracking-wider text-transparent bg-clip-text bg-gradient-to-r from-lux-gold via-pink-300 to-lux-cyan">
+                    Ajar & Me
+                </h1>
+                <p class="text-[10px] text-pink-300/70 font-tech tracking-widest uppercase">4-Month Executive Anniversary</p>
+            </div>
+        </div>
+
+        <!-- Desktop Navigation Tabs -->
+        <nav class="hidden lg:flex items-center space-x-2 bg-slate-950/60 p-1.5 rounded-full border border-pink-500/20">
+            <button onclick="switchTab('dashboard')" id="dtTab-dashboard" class="nav-btn px-5 py-2 rounded-full text-xs font-tech font-bold uppercase tracking-wider transition-all text-lux-gold bg-lux-rose/20 border border-lux-rose/40">
+                <i class="fa-solid fa-chart-pie mr-2"></i>Dashboard
+            </button>
+            <button onclick="switchTab('timeline')" id="dtTab-timeline" class="nav-btn px-5 py-2 rounded-full text-xs font-tech font-bold uppercase tracking-wider transition-all text-slate-400 hover:text-white">
+                <i class="fa-solid fa-timeline mr-2"></i>Timeline & Sound
+            </button>
+            <button onclick="switchTab('vault')" id="dtTab-vault" class="nav-btn px-5 py-2 rounded-full text-xs font-tech font-bold uppercase tracking-wider transition-all text-slate-400 hover:text-white">
+                <i class="fa-solid fa-vault mr-2"></i>Hologram Vault
+            </button>
+            <button onclick="switchTab('arcade')" id="dtTab-arcade" class="nav-btn px-5 py-2 rounded-full text-xs font-tech font-bold uppercase tracking-wider transition-all text-slate-400 hover:text-white">
+                <i class="fa-solid fa-trophy mr-2"></i>Arcade Room
+            </button>
+        </nav>
+
+        <!-- Master Sound Synthesizer Controller -->
+        <button id="masterAudioBtn" class="flex items-center space-x-2 px-4 py-2 rounded-full glass-box hover:border-lux-cyan/60 transition-all group">
+            <span id="audioStatusDot" class="w-2.5 h-2.5 rounded-full bg-lux-rose group-hover:bg-lux-cyan transition-colors"></span>
+            <span id="audioBtnText" class="text-xs font-tech font-semibold text-pink-200 hidden sm:inline">Audio Synthesizer</span>
+            <i class="fa-solid fa-waveform-lines text-xs text-lux-cyan"></i>
+        </button>
+    </header>
+
+    <!-- Main Container Grid -->
+    <main class="relative z-10 max-w-7xl mx-auto px-4 md:px-8 py-8">
+
+        <!-- ================= SCREEN 1: EXECUTIVE DASHBOARD ================= -->
+        <section id="tab-dashboard" class="tab-content active space-y-10">
+            
+            <!-- Hero Banner Grid -->
+            <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-center">
+                
+                <!-- Left: Interactive Centerpiece -->
+                <div class="lg:col-span-5 flex flex-col items-center justify-center text-center">
+                    <div class="relative group cursor-pointer" onclick="triggerHeartBurst(event)">
+                        <div class="absolute inset-0 rounded-full bg-lux-rose/20 blur-3xl group-hover:bg-lux-cyan/30 transition-all duration-700"></div>
+                        <div class="w-44 h-44 md:w-52 md:h-52 glass-box-gold rounded-full flex items-center justify-center animate-heart-pulse border-2 border-lux-gold/50 group-hover:border-lux-cyan">
+                            <i class="fa-solid fa-heart text-7xl md:text-8xl text-transparent bg-clip-text bg-gradient-to-tr from-lux-rose via-amber-300 to-lux-cyan"></i>
+                        </div>
+                        <span class="absolute -bottom-3 left-1/2 -translate-x-1/2 px-4 py-1.5 rounded-full bg-black/80 border border-lux-gold/50 text-[10px] font-tech text-lux-gold tracking-widest uppercase whitespace-nowrap shadow-xl">
+                            TAP CRYSTAL TO PULSE
+                        </span>
+                    </div>
+                </div>
+
+                <!-- Right: Header Intro & Live Ticker -->
+                <div class="lg:col-span-7 space-y-6 text-center lg:text-left">
+                    <div class="inline-flex items-center space-x-2 px-4 py-1.5 rounded-full glass-box border border-lux-gold/40 text-lux-gold text-xs font-tech font-bold uppercase tracking-widest shadow-xl">
+                        <i class="fa-solid fa-sparkles text-lux-rose"></i>
+                        <span>Engagement Milestone: July 19, 2026</span>
+                    </div>
+
+                    <h2 class="text-3xl md:text-6xl font-extrabold font-serif text-white tracking-tight leading-tight text-glow-rose">
+                        Four Months of Unconditional Devotion
+                    </h2>
+
+                    <p class="text-sm md:text-base text-slate-300 font-light leading-relaxed max-w-2xl">
+                        An executive interactive tribute dedicated exclusively to <span class="text-lux-gold font-bold underline decoration-lux-gold/50 underline-offset-4">Ajar</span>. 
+                        Tracking every single second since our commitment on July 19th with live telemetry and synthesized harmonic audio.
+                    </p>
+
+                    <!-- Continuum Counter Grid -->
+                    <div class="glass-box-gold rounded-3xl p-6 border border-lux-gold/30">
+                        <h3 class="text-xs font-tech uppercase tracking-widest text-lux-gold font-bold mb-4 flex items-center justify-center lg:justify-start">
+                            <i class="fa-solid fa-clock-three mr-2 text-lux-rose"></i> Live Time Continuum Tracker
+                        </h3>
+                        <div class="grid grid-cols-2 md:grid-cols-4 gap-4 text-center">
+                            <div class="glass-box rounded-2xl p-4 border border-lux-rose/30">
+                                <span id="dashDays" class="block text-3xl md:text-4xl font-extrabold font-tech text-lux-rose text-glow-rose">0</span>
+                                <span class="text-[10px] text-slate-400 uppercase tracking-widest mt-1 block">Days</span>
+                            </div>
+                            <div class="glass-box rounded-2xl p-4 border border-lux-rose/30">
+                                <span id="dashHours" class="block text-3xl md:text-4xl font-extrabold font-tech text-lux-cyan text-glow-cyan">00</span>
+                                <span class="text-[10px] text-slate-400 uppercase tracking-widest mt-1 block">Hours</span>
+                            </div>
+                            <div class="glass-box rounded-2xl p-4 border border-lux-rose/30">
+                                <span id="dashMinutes" class="block text-3xl md:text-4xl font-extrabold font-tech text-lux-rose text-glow-rose">00</span>
+                                <span class="text-[10px] text-slate-400 uppercase tracking-widest mt-1 block">Minutes</span>
+                            </div>
+                            <div class="glass-box rounded-2xl p-4 border border-lux-rose/30">
+                                <span id="dashSeconds" class="block text-3xl md:text-4xl font-extrabold font-tech text-lux-gold text-glow-gold">00</span>
+                                <span class="text-[10px] text-slate-400 uppercase tracking-widest mt-1 block">Seconds</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Milestone Key Metrics (4-Column Layout) -->
+            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+                <div class="glass-box rounded-3xl p-6 border border-lux-gold/30 hover:border-lux-gold transition-all duration-300 space-y-2">
+                    <div class="w-12 h-12 rounded-2xl bg-lux-gold/10 border border-lux-gold/40 flex items-center justify-center text-lux-gold text-xl">
+                        <i class="fa-solid fa-calendar-check"></i>
+                    </div>
+                    <span class="block text-xs font-tech text-slate-400 uppercase tracking-wider">Days Together</span>
+                    <span class="block text-2xl font-extrabold font-tech text-white">122+ Days</span>
+                    <p class="text-[11px] text-slate-400 leading-snug">Continuous journey of respect, love, and understanding.</p>
+                </div>
+
+                <div class="glass-box rounded-3xl p-6 border border-lux-rose/30 hover:border-lux-rose transition-all duration-300 space-y-2">
+                    <div class="w-12 h-12 rounded-2xl bg-lux-rose/10 border border-lux-rose/40 flex items-center justify-center text-lux-rose text-xl">
+                        <i class="fa-solid fa-clock"></i>
+                    </div>
+                    <span class="block text-xs font-tech text-slate-400 uppercase tracking-wider">Hours Shared</span>
+                    <span class="block text-2xl font-extrabold font-tech text-white">2,928+ Hours</span>
+                    <p class="text-[11px] text-slate-400 leading-snug">Every single hour filled with sweet conversations.</p>
+                </div>
+
+                <div class="glass-box rounded-3xl p-6 border border-lux-cyan/30 hover:border-lux-cyan transition-all duration-300 space-y-2">
+                    <div class="w-12 h-12 rounded-2xl bg-lux-cyan/10 border border-lux-cyan/40 flex items-center justify-center text-lux-cyan text-xl">
+                        <i class="fa-solid fa-gem"></i>
+                    </div>
+                    <span class="block text-xs font-tech text-slate-400 uppercase tracking-wider">Memories Unlocked</span>
+                    <span class="block text-2xl font-extrabold font-tech text-white">Infinite</span>
+                    <p class="text-[11px] text-slate-400 leading-snug">Cherished milestones recorded in our personal vault.</p>
+                </div>
+
+                <div class="glass-box rounded-3xl p-6 border border-purple-500/30 hover:border-purple-400 transition-all duration-300 space-y-2">
+                    <div class="w-12 h-12 rounded-2xl bg-purple-500/10 border border-purple-400/40 flex items-center justify-center text-purple-300 text-xl">
+                        <i class="fa-solid fa-infinity"></i>
+                    </div>
+                    <span class="block text-xs font-tech text-slate-400 uppercase tracking-wider">Bond Score</span>
+                    <span class="block text-2xl font-extrabold font-tech text-white">100% Match</span>
+                    <p class="text-[11px] text-slate-400 leading-snug">Built on trust, admiration, and everlasting care.</p>
+                </div>
+            </div>
+
+            <!-- Daily Compliment / Quote Slider Card -->
+            <div class="glass-box-gold rounded-3xl p-8 border border-lux-gold/40 relative overflow-hidden">
+                <div class="flex flex-col md:flex-row justify-between items-center gap-6">
+                    <div class="space-y-2 text-center md:text-left flex-1">
+                        <span class="text-xs font-tech text-lux-gold uppercase tracking-widest font-bold">Executive Compliment Generator</span>
+                        <p id="complimentText" class="text-base md:text-xl font-light italic text-slate-100 leading-relaxed">
+                            "Ajar, your elegance and gentle heart make every single day feel like a celebration."
+                        </p>
+                    </div>
+                    <button onclick="cycleCompliment()" class="px-6 py-3 rounded-full bg-gradient-to-r from-lux-gold to-lux-rose text-slate-950 font-tech font-bold text-xs uppercase tracking-wider shadow-xl hover:scale-105 transition-all whitespace-nowrap">
+                        <i class="fa-solid fa-rotate mr-2"></i> Next Compliment
+                    </button>
+                </div>
+            </div>
+        </section>
+
+
+        <!-- ================= SCREEN 2: TIMELINE & SOUNDSCAPE ================= -->
+        <section id="tab-timeline" class="tab-content space-y-10">
+            <div class="text-center space-y-2 max-w-xl mx-auto">
+                <span class="text-xs font-tech font-bold uppercase tracking-widest text-lux-cyan">Executive Feature</span>
+                <h3 class="text-3xl md:text-5xl font-serif font-extrabold text-white">Milestone Timeline & Soundscape</h3>
+                <p class="text-xs md:text-sm text-slate-300">
+                    Interact with key timeline nodes from July 19th to November 19th to synthesize ambient harmonic chords.
+                </p>
+            </div>
+
+            <!-- Vertical Glowing Timeline Grid -->
+            <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-start">
+                
+                <!-- Left: Interactive Timeline -->
+                <div class="lg:col-span-7 space-y-6">
+                    <!-- Milestone 1 -->
+                    <div onclick="playHarmonicNode(0)" class="glass-box p-6 rounded-3xl border border-lux-gold/40 hover:border-lux-gold transition-all cursor-pointer group space-y-3">
+                        <div class="flex justify-between items-center">
+                            <span class="text-xs font-tech font-bold text-lux-gold uppercase tracking-widest">July 19, 2026 • Milestone 01</span>
+                            <span class="px-3 py-1 rounded-full bg-lux-gold/10 text-lux-gold text-[10px] font-tech font-bold border border-lux-gold/30">Engagement Day</span>
+                        </div>
+                        <h4 class="text-xl font-bold font-serif text-white group-hover:text-lux-gold transition-colors">The Beginning of Forever</h4>
+                        <p class="text-xs text-slate-300 leading-relaxed font-light">
+                            The magical day our families united and we began our beautiful journey of togetherness.
+                        </p>
+                        <div class="text-[11px] text-lux-cyan font-tech flex items-center space-x-2">
+                            <i class="fa-solid fa-play text-xs"></i> <span>Play Fmaj7 Serenity Chord</span>
+                        </div>
+                    </div>
+
+                    <!-- Milestone 2 -->
+                    <div onclick="playHarmonicNode(1)" class="glass-box p-6 rounded-3xl border border-lux-rose/40 hover:border-lux-rose transition-all cursor-pointer group space-y-3">
+                        <div class="flex justify-between items-center">
+                            <span class="text-xs font-tech font-bold text-lux-rose uppercase tracking-widest">August 19, 2026 • Milestone 02</span>
+                            <span class="px-3 py-1 rounded-full bg-lux-rose/10 text-lux-rose text-[10px] font-tech font-bold border border-lux-rose/30">1 Month Complete</span>
+                        </div>
+                        <h4 class="text-xl font-bold font-serif text-white group-hover:text-lux-rose transition-colors">First Month of Happiness</h4>
+                        <p class="text-xs text-slate-300 leading-relaxed font-light">
+                            31 days of learning about each other's dreams, preferences, and creating sweet daily habits.
+                        </p>
+                        <div class="text-[11px] text-lux-cyan font-tech flex items-center space-x-2">
+                            <i class="fa-solid fa-play text-xs"></i> <span>Play Am7 Devotion Chord</span>
+                        </div>
+                    </div>
+
+                    <!-- Milestone 3 -->
+                    <div onclick="playHarmonicNode(2)" class="glass-box p-6 rounded-3xl border border-lux-cyan/40 hover:border-lux-cyan transition-all cursor-pointer group space-y-3">
+                        <div class="flex justify-between items-center">
+                            <span class="text-xs font-tech font-bold text-lux-cyan uppercase tracking-widest">September 19, 2026 • Milestone 03</span>
+                            <span class="px-3 py-1 rounded-full bg-lux-cyan/10 text-lux-cyan text-[10px] font-tech font-bold border border-lux-cyan/30">2 Months Complete</span>
+                        </div>
+                        <h4 class="text-xl font-bold font-serif text-white group-hover:text-lux-cyan transition-colors">Building Trust & Harmony</h4>
+                        <p class="text-xs text-slate-300 leading-relaxed font-light">
+                            Deepening our bond and sharing countless moments of laughter and caring support.
+                        </p>
+                        <div class="text-[11px] text-lux-cyan font-tech flex items-center space-x-2">
+                            <i class="fa-solid fa-play text-xs"></i> <span>Play Cmaj7 Harmony Chord</span>
+                        </div>
+                    </div>
+
+                    <!-- Milestone 4 -->
+                    <div onclick="playHarmonicNode(3)" class="glass-box p-6 rounded-3xl border border-purple-500/40 hover:border-purple-400 transition-all cursor-pointer group space-y-3">
+                        <div class="flex justify-between items-center">
+                            <span class="text-xs font-tech font-bold text-purple-300 uppercase tracking-widest">November 19, 2026 • Milestone 04</span>
+                            <span class="px-3 py-1 rounded-full bg-purple-500/10 text-purple-300 text-[10px] font-tech font-bold border border-purple-400/30">4 Months Complete</span>
+                        </div>
+                        <h4 class="text-xl font-bold font-serif text-white group-hover:text-purple-300 transition-colors">4 Months Celebration Today</h4>
+                        <p class="text-xs text-slate-300 leading-relaxed font-light">
+                            Celebrating 122 days of commitment with this high-end interactive digital web application.
+                        </p>
+                        <div class="text-[11px] text-lux-cyan font-tech flex items-center space-x-2">
+                            <i class="fa-solid fa-play text-xs"></i> <span>Play G6 Forever Chord</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Right: Audio Synthesizer Ring Visualizer -->
+                <div class="lg:col-span-5 sticky top-24 space-y-6">
+                    <div class="glass-box-gold rounded-3xl p-8 text-center space-y-6 border border-lux-gold/40">
+                        <div class="relative flex justify-center items-center py-2">
+                            <canvas id="visualizerCanvas" width="280" height="280" class="w-56 h-56 md:w-64 md:h-64"></canvas>
+                            <div class="absolute inset-0 flex flex-col items-center justify-center pointer-events-none text-center px-4">
+                                <span class="text-[10px] font-tech text-lux-gold uppercase tracking-widest">Active Tone</span>
+                                <span id="activeChordName" class="text-base font-extrabold text-white text-glow-gold">Select Timeline Node</span>
+                            </div>
+                        </div>
+
+                        <div class="glass-box rounded-2xl p-4 border border-lux-rose/30 min-h-[90px] flex items-center justify-center">
+                            <p id="harmonicLyricText" class="text-xs font-light italic text-slate-200">
+                                "Click any timeline card on the left to synthesize ambient chords and reveal dedicated thoughts for Ajar..."
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+
+        <!-- ================= SCREEN 3: HOLOGRAM VAULT & LETTER ================= -->
+        <section id="tab-vault" class="tab-content space-y-10">
+            <div class="text-center space-y-2 max-w-xl mx-auto">
+                <span class="text-xs font-tech font-bold uppercase tracking-widest text-lux-gold">Executive Security</span>
+                <h3 class="text-3xl md:text-5xl font-serif font-extrabold text-white">Holographic Security Vault</h3>
+                <p class="text-xs md:text-sm text-slate-300">
+                    Enter the passcode (<span class="text-lux-gold font-tech font-bold">1907</span>) to open the vault and scratch away the stardust layer!
+                </p>
+            </div>
+
+            <!-- Security Keypad Lock -->
+            <div id="vaultLockScreen" class="glass-box-gold rounded-3xl p-8 text-center space-y-6 max-w-md mx-auto border border-lux-gold/40 shadow-2xl">
+                <div class="w-16 h-16 mx-auto rounded-full bg-lux-gold/10 border border-lux-gold/40 flex items-center justify-center text-lux-gold text-2xl animate-pulse">
+                    <i class="fa-solid fa-lock"></i>
+                </div>
+
+                <div class="space-y-1">
+                    <h4 class="text-lg font-bold font-serif text-white">Passcode Security Panel</h4>
+                    <p class="text-xs text-slate-400">Passcode Hint: Engagement Date (19-07)</p>
+                </div>
+
+                <div class="flex justify-center py-2">
+                    <input type="password" id="passcodeDisplay" readonly value="" placeholder="••••" class="w-44 text-center text-3xl font-tech font-bold tracking-widest bg-black/80 border border-lux-gold/50 rounded-2xl py-2.5 text-lux-gold focus:outline-none shadow-inner">
+                </div>
+
+                <div class="grid grid-cols-3 gap-3 max-w-[240px] mx-auto">
+                    <button onclick="pressKey('1')" class="glass-box p-3.5 rounded-2xl font-tech font-bold text-xl text-white hover:bg-lux-gold/20 transition-colors">1</button>
+                    <button onclick="pressKey('9')" class="glass-box p-3.5 rounded-2xl font-tech font-bold text-xl text-white hover:bg-lux-gold/20 transition-colors">9</button>
+                    <button onclick="pressKey('0')" class="glass-box p-3.5 rounded-2xl font-tech font-bold text-xl text-white hover:bg-lux-gold/20 transition-colors">0</button>
+                    <button onclick="pressKey('7')" class="glass-box p-3.5 rounded-2xl font-tech font-bold text-xl text-white hover:bg-lux-gold/20 transition-colors">7</button>
+                    <button onclick="clearPasscode()" class="glass-box p-3.5 rounded-2xl font-tech text-xs text-amber-300 hover:bg-rose-500/20 transition-colors flex items-center justify-center"><i class="fa-solid fa-xmark"></i></button>
+                    <button onclick="verifyPasscode()" class="glass-box p-3.5 rounded-2xl font-tech text-xs text-lux-cyan hover:bg-cyan-500/20 transition-colors flex items-center justify-center"><i class="fa-solid fa-check"></i></button>
+                </div>
+            </div>
+
+            <!-- Unlocked Vault Content -->
+            <div id="vaultUnlockedContent" class="hidden space-y-10">
+                
+                <!-- Holographic Scratch Canvas -->
+                <div class="glass-box-gold rounded-3xl p-6 md:p-8 text-center space-y-6 border border-lux-gold/40">
+                    <div class="space-y-1">
+                        <span class="text-xs font-tech text-lux-gold font-bold uppercase tracking-widest">Vault Unlocked Successfully</span>
+                        <h4 class="text-2xl font-bold font-serif text-white">Holographic Stardust Letter</h4>
+                        <p class="text-xs text-slate-300">Swipe or scratch with your finger/mouse across the glitter layer below to read!</p>
+                    </div>
+
+                    <div class="relative w-full max-w-xl mx-auto h-72 rounded-3xl overflow-hidden border border-lux-gold/50 shadow-2xl">
+                        <!-- Secret Revealed Content -->
+                        <div class="absolute inset-0 bg-gradient-to-br from-slate-950 via-purple-950 to-slate-900 p-8 flex flex-col justify-center items-center text-center space-y-4">
+                            <i class="fa-solid fa-crown text-lux-gold text-3xl"></i>
+                            <h5 class="text-xl font-bold text-lux-gold font-serif">Dearest Ajar,</h5>
+                            <p class="text-xs md:text-sm text-slate-200 leading-relaxed font-light max-w-md">
+                                "These 4 months since July 19th have been the happiest chapter of my life. Your sweetness, elegance, and respect make my world complete."
+                            </p>
+                            <button onclick="open3DLetterModal()" class="px-5 py-2 rounded-full bg-gradient-to-r from-lux-gold to-lux-rose text-slate-950 font-tech font-bold text-xs uppercase tracking-wider shadow-lg hover:scale-105 transition-all">
+                                <i class="fa-solid fa-envelope-open mr-2"></i> Open Formal Sealed Envelope
+                            </button>
+                        </div>
+
+                        <!-- Scratch Layer Canvas -->
+                        <canvas id="scratchCanvas" width="550" height="290" class="absolute inset-0 w-full h-full z-10 cursor-pointer"></canvas>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+
+        <!-- ================= SCREEN 4: ARCADE & TROPHY ROOM ================= -->
+        <section id="tab-arcade" class="tab-content space-y-10">
+            <div class="text-center space-y-2 max-w-xl mx-auto">
+                <span class="text-xs font-tech font-bold uppercase tracking-widest text-lux-gold">Executive Arcade</span>
+                <h3 class="text-3xl md:text-5xl font-serif font-extrabold text-white">Starlight Collector & Trophy</h3>
+                <p class="text-xs md:text-sm text-slate-300">
+                    Collect glowing anniversary gems to unlock the official 4-Month Trophy Certificate!
+                </p>
+            </div>
+
+            <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-center">
+                <!-- Arcade Canvas Game -->
+                <div class="lg:col-span-7 glass-box-gold rounded-3xl p-6 text-center space-y-4 border border-lux-gold/40">
+                    <div class="relative w-full max-w-md mx-auto rounded-2xl overflow-hidden border border-lux-cyan/40 shadow-2xl">
+                        <canvas id="runnerCanvas" width="400" height="260" class="w-full h-64 bg-slate-950"></canvas>
+                        
+                        <div id="gameOverOverlay" class="absolute inset-0 bg-black/85 backdrop-blur-md flex flex-col items-center justify-center space-y-4 hidden">
+                            <i class="fa-solid fa-trophy text-lux-gold text-4xl animate-bounce"></i>
+                            <h4 class="text-2xl font-bold font-serif text-lux-gold">Anniversary Challenge Cleared!</h4>
+                            <p id="finalScoreText" class="text-xs text-lux-cyan font-tech">Gems Collected: 10</p>
+                            <button onclick="startRunnerGame()" class="px-6 py-2.5 rounded-full bg-lux-rose text-white font-tech text-xs font-bold uppercase tracking-wider shadow-lg">
+                                Play Again
+                            </button>
+                        </div>
+                    </div>
+
+                    <div class="flex justify-between items-center max-w-md mx-auto px-2 text-xs font-tech">
+                        <span id="runnerScore" class="font-bold text-lux-gold">Anniversary Gems: 0 / 10</span>
+                        <button onclick="startRunnerGame()" class="px-4 py-2 rounded-full glass-box hover:bg-lux-gold/20 text-lux-gold text-xs transition-all">
+                            <i class="fa-solid fa-play mr-1"></i> Start Game
+                        </button>
+                    </div>
+                    <p class="text-[10px] text-slate-400">Controls: Click or Tap canvas to Jump ship!</p>
+                </div>
+
+                <!-- Digital Trophy Certificate -->
+                <div class="lg:col-span-5 glass-box-gold rounded-3xl p-8 text-center space-y-5 border border-lux-gold/50 shadow-2xl relative overflow-hidden">
+                    <div class="w-24 h-24 mx-auto rounded-full bg-gradient-to-tr from-lux-gold via-amber-300 to-lux-rose p-0.5 shadow-2xl animate-float">
+                        <div class="w-full h-full bg-slate-950 rounded-full flex items-center justify-center text-lux-gold text-4xl">
+                            <i class="fa-solid fa-trophy"></i>
+                        </div>
+                    </div>
+
+                    <div class="space-y-2">
+                        <span class="text-xs font-tech font-bold text-lux-gold uppercase tracking-widest">Official Certificate</span>
+                        <h4 class="text-2xl font-bold font-serif text-white text-glow-gold">Trophy of Devotion</h4>
+                        <p class="text-xs text-slate-300 leading-relaxed font-light">
+                            Presented to <span class="text-lux-gold font-bold">Ajar</span> for 4 months of unconditional affection, sweetness, and being the best life partner.
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+    </main>
+
+    <!-- Interactive 3D Envelope Modal -->
+    <div id="envelopeModal" class="fixed inset-0 z-50 bg-black/85 backdrop-blur-lg flex items-center justify-center p-4 hidden">
+        <div class="glass-box-gold rounded-3xl p-6 md:p-8 max-w-lg w-full space-y-6 border border-lux-gold/50 relative shadow-2xl">
+            <button onclick="close3DLetterModal()" class="absolute top-4 right-4 w-9 h-9 rounded-full bg-slate-900 text-slate-400 hover:text-white flex items-center justify-center z-50 border border-slate-700">
+                <i class="fa-solid fa-xmark text-lg"></i>
+            </button>
+            
+            <div class="text-center space-y-1">
+                <span class="text-xs font-tech text-lux-gold uppercase tracking-widest font-bold">4-Month Formal Letter</span>
+                <h4 class="text-2xl font-bold font-serif text-white">To My Beloved Ajar</h4>
+                <p id="envelopeInstruction" class="text-[11px] text-pink-300 font-tech">Click the Wax Seal to unseal the letter!</p>
+            </div>
+
+            <!-- 3D Interactive Envelope Container -->
+            <div id="envelopeWrapper" class="envelope-wrapper perspective-1000" onclick="toggleEnvelope()">
+                <div class="envelope-flap"></div>
+                <div id="waxSealBtn" class="wax-seal">
+                    <i class="fa-solid fa-heart"></i>
+                </div>
+                <div class="envelope-body"></div>
+                <div class="letter-paper flex flex-col justify-between">
+                    <div class="space-y-3">
+                        <div class="flex justify-between items-center border-b border-lux-gold/20 pb-2">
+                            <span class="text-[10px] font-tech text-lux-gold uppercase tracking-widest font-bold">July 19, 2026 → Nov 19, 2026</span>
+                            <i class="fa-solid fa-crown text-lux-gold text-xs"></i>
+                        </div>
+                        <p id="typewriterLetterText" class="text-xs md:text-sm font-light leading-relaxed text-slate-200 min-h-[100px]">
+                            <!-- Typed text appears smoothly here -->
+                        </p>
+                    </div>
+                    <div class="text-right font-serif text-xs text-lux-gold font-bold pt-2 border-t border-lux-gold/20">
+                        Forever Yours ❤️
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Floating Curved Mobile Glass Tab Navigation Bar -->
+    <div class="lg:hidden fixed bottom-4 left-4 right-4 z-40">
+        <nav class="glass-tab rounded-full p-2 flex justify-around items-center border border-pink-500/20 shadow-2xl">
+            <button onclick="switchTab('dashboard')" id="mbTab-dashboard" class="flex flex-col items-center p-2 text-lux-gold">
+                <i class="fa-solid fa-chart-pie text-lg"></i>
+                <span class="text-[9px] font-tech font-bold uppercase mt-1">Dash</span>
+            </button>
+            <button onclick="switchTab('timeline')" id="mbTab-timeline" class="flex flex-col items-center p-2 text-slate-400">
+                <i class="fa-solid fa-timeline text-lg"></i>
+                <span class="text-[9px] font-tech font-bold uppercase mt-1">Time</span>
+            </button>
+            <button onclick="switchTab('vault')" id="mbTab-vault" class="flex flex-col items-center p-2 text-slate-400">
+                <i class="fa-solid fa-vault text-lg"></i>
+                <span class="text-[9px] font-tech font-bold uppercase mt-1">Vault</span>
+            </button>
+            <button onclick="switchTab('arcade')" id="mbTab-arcade" class="flex flex-col items-center p-2 text-slate-400">
+                <i class="fa-solid fa-trophy text-lg"></i>
+                <span class="text-[9px] font-tech font-bold uppercase mt-1">Arcade</span>
+            </button>
+        </nav>
+    </div>
+
+    <!-- JavaScript Engines -->
+    <script>
+        /* ========================================================
+           1. NAVIGATION TAB SYSTEM
+           ======================================================== */
+        function switchTab(tabId) {
+            document.querySelectorAll('.tab-content').forEach(el => el.classList.remove('active'));
+            document.getElementById(`tab-${tabId}`).classList.add('active');
+
+            // Update Desktop Nav
+            ['dashboard', 'timeline', 'vault', 'arcade'].forEach(t => {
+                const dt = document.getElementById(`dtTab-${t}`);
+                const mb = document.getElementById(`mbTab-${t}`);
+
+                if (t === tabId) {
+                    if (dt) dt.className = 'nav-btn px-5 py-2 rounded-full text-xs font-tech font-bold uppercase tracking-wider transition-all text-lux-gold bg-lux-rose/20 border border-lux-rose/40';
+                    if (mb) mb.className = 'flex flex-col items-center p-2 text-lux-gold';
+                } else {
+                    if (dt) dt.className = 'nav-btn px-5 py-2 rounded-full text-xs font-tech font-bold uppercase tracking-wider transition-all text-slate-400 hover:text-white';
+                    if (mb) mb.className = 'flex flex-col items-center p-2 text-slate-400';
+                }
+            });
+
+            if (tabId === 'vault' && document.getElementById('vaultUnlockedContent').classList.contains('hidden') === false) {
+                initScratchCanvas();
+            }
+        }
+
+        /* ========================================================
+           2. COUNTDOWN TELEMETRY ENGINE (July 19, 2026)
+           ======================================================== */
+        const engagementDate = new Date("2026-07-19T00:00:00");
+
+        function updateTimer() {
+            const now = new Date();
+            const diff = Math.abs(now - engagementDate);
+
+            const days = Math.floor(diff / (1000 * 60 * 60 * 24));
+            const hours = Math.floor((diff % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+            const minutes = Math.floor((diff % (1000 * 60 * 60)) / (1000 * 60));
+            const seconds = Math.floor((diff % (1000 * 60)) / 1000);
+
+            document.getElementById('dashDays').innerText = days;
+            document.getElementById('dashHours').innerText = hours < 10 ? '0' + hours : hours;
+            document.getElementById('dashMinutes').innerText = minutes < 10 ? '0' + minutes : minutes;
+            document.getElementById('dashSeconds').innerText = seconds < 10 ? '0' + seconds : seconds;
+        }
+        setInterval(updateTimer, 1000);
+        updateTimer();
+
+        /* ========================================================
+           3. BACKGROUND AMBIENT PARTICLES & CRYSTAL SHOCKWAVE
+           ======================================================== */
+        const bgCanvas = document.getElementById('luxBgCanvas');
+        const bgCtx = bgCanvas.getContext('2d');
+        let bgWidth, bgHeight;
+        let particles = [];
+        let shockwaveHearts = [];
+
+        function resizeBgCanvas() {
+            bgWidth = bgCanvas.width = window.innerWidth;
+            bgHeight = bgCanvas.height = window.innerHeight;
+        }
+        window.addEventListener('resize', resizeBgCanvas);
+        resizeBgCanvas();
+
+        class Particle3D {
+            constructor() {
+                this.reset();
+            }
+            reset() {
+                this.x = (Math.random() - 0.5) * bgWidth * 1.5;
+                this.y = (Math.random() - 0.5) * bgHeight * 1.5;
+                this.z = Math.random() * 800 + 100;
+                this.size = Math.random() * 2 + 1;
+                this.color = Math.random() > 0.5 ? '#D4AF37' : '#FF2E93';
+            }
+            update() {
+                this.z -= 0.8;
+                if (this.z <= 0) this.reset();
+            }
+            draw() {
+                const fov = 350;
+                const scale = fov / (fov + this.z);
+                const projX = this.x * scale + bgWidth / 2;
+                const projY = this.y * scale + bgHeight / 2;
+
+                bgCtx.save();
+                bgCtx.globalAlpha = Math.min(1, (800 - this.z) / 400);
+                bgCtx.fillStyle = this.color;
+                bgCtx.beginPath();
+                bgCtx.arc(projX, projY, this.size * scale * 2, 0, Math.PI * 2);
+                bgCtx.fill();
+                bgCtx.restore();
+            }
+        }
+        for (let i = 0; i < 100; i++) particles.push(new Particle3D());
+
+        class HeartShockwave {
+            constructor(x, y) {
+                this.x = x;
+                this.y = y;
+                this.size = Math.random() * 18 + 10;
+                this.vx = (Math.random() - 0.5) * 8;
+                this.vy = (Math.random() - 0.5) * 8;
+                this.life = 1.0;
+                this.color = Math.random() > 0.5 ? '#D4AF37' : '#FF2E93';
+            }
+            update() {
+                this.x += this.vx;
+                this.y += this.vy;
+                this.life -= 0.02;
+            }
+            draw() {
+                bgCtx.save();
+                bgCtx.globalAlpha = Math.max(0, this.life);
+                bgCtx.fillStyle = this.color;
+                bgCtx.font = `${this.size}px FontAwesome`;
+                bgCtx.fillText('♥', this.x, this.y);
+                bgCtx.restore();
+            }
+        }
+
+        function triggerHeartBurst(e) {
+            const rect = e.currentTarget.getBoundingClientRect();
+            const cx = rect.left + rect.width / 2;
+            const cy = rect.top + rect.height / 2;
+            for (let i = 0; i < 25; i++) {
+                shockwaveHearts.push(new HeartShockwave(cx, cy));
+            }
+            synthesizeChime(523.25);
+        }
+
+        function renderBg() {
+            bgCtx.clearRect(0, 0, bgWidth, bgHeight);
+            particles.forEach(p => { p.update(); p.draw(); });
+            for (let i = shockwaveHearts.length - 1; i >= 0; i--) {
+                shockwaveHearts[i].update();
+                shockwaveHearts[i].draw();
+                if (shockwaveHearts[i].life <= 0) shockwaveHearts.splice(i, 1);
+            }
+            requestAnimationFrame(renderBg);
+        }
+        renderBg();
+
+        /* ========================================================
+           4. COMPLIMENT GENERATOR
+           ======================================================== */
+        const compliments = [
+            "Ajar, your elegance and gentle heart make every single day feel like a celebration.",
+            "Four months of knowing you has brought more joy into my life than words can express.",
+            "Your respect, kindness, and beauty shine brighter than all the stars.",
+            "I am forever grateful for July 19th—the day our journey together officially began."
+        ];
+        let currentComplimentIndex = 0;
+
+        function cycleCompliment() {
+            currentComplimentIndex = (currentComplimentIndex + 1) % compliments.length;
+            document.getElementById('complimentText').innerText = `"${compliments[currentComplimentIndex]}"`;
+            synthesizeChime(600, 0.3);
+        }
+
+        /* ========================================================
+           5. AUDIO SYNTHESIZER & VISUALIZER RING
+           ======================================================== */
+        let audioCtx = null;
+
+        function initAudio() {
+            if (!audioCtx) audioCtx = new (window.AudioContext || window.webkitAudioContext)();
+            if (audioCtx.state === 'suspended') audioCtx.resume();
+            document.getElementById('audioBtnText').innerText = 'Audio Active';
+            document.getElementById('audioStatusDot').className = 'w-2.5 h-2.5 rounded-full bg-lux-cyan animate-ping';
+        }
+        document.getElementById('masterAudioBtn').addEventListener('click', initAudio);
+
+        function synthesizeChime(freq, duration = 2.0) {
+            if (!audioCtx) initAudio();
+            try {
+                const osc = audioCtx.createOscillator();
+                const gain = audioCtx.createGain();
+
+                osc.type = 'sine';
+                osc.frequency.setValueAtTime(freq, audioCtx.currentTime);
+
+                gain.gain.setValueAtTime(0.001, audioCtx.currentTime);
+                gain.gain.exponentialRampToValueAtTime(0.12, audioCtx.currentTime + 0.1);
+                gain.gain.exponentialRampToValueAtTime(0.0001, audioCtx.currentTime + duration);
+
+                osc.connect(gain);
+                gain.connect(audioCtx.destination);
+                osc.start();
+                osc.stop(audioCtx.currentTime + duration);
+            } catch (e) {}
+        }
+
+        const chordData = [
+            { name: "Fmaj7 (Serenity)", freqs: [349.23, 440.00, 523.25, 659.25], lyric: "Your serene voice brings endless peace to my days." },
+            { name: "Am7 (Devotion)", freqs: [440.00, 523.25, 659.25, 783.99], lyric: "Four months of deep admiration and respect for your kind heart." },
+            { name: "Cmaj7 (Harmony)", freqs: [261.63, 329.63, 392.00, 493.88], lyric: "Every single moment spent conversing with you feels like pure harmony." },
+            { name: "G6 (Forever)", freqs: [392.00, 493.88, 587.33, 659.25], lyric: "Looking forward to a lifetime of togetherness and unconditional love." }
+        ];
+
+        function playHarmonicNode(index) {
+            const data = chordData[index];
+            document.getElementById('activeChordName').innerText = data.name;
+            document.getElementById('harmonicLyricText').innerText = `"${data.lyric}"`;
+
+            data.freqs.forEach((f, i) => {
+                setTimeout(() => synthesizeChime(f, 2.5), i * 120);
+            });
+            visualizerPulse = 1.0;
+        }
+
+        const visCanvas = document.getElementById('visualizerCanvas');
+        const visCtx = visCanvas.getContext('2d');
+        let visualizerPulse = 0;
+
+        function renderVisualizer() {
+            visCtx.clearRect(0, 0, visCanvas.width, visCanvas.height);
+            const cx = visCanvas.width / 2;
+            const cy = visCanvas.height / 2;
+            const radius = 70 + visualizerPulse * 15;
+
+            visCtx.save();
+            visCtx.strokeStyle = visualizerPulse > 0.1 ? '#00F0FF' : '#D4AF37';
+            visCtx.lineWidth = 3;
+            visCtx.beginPath();
+            
+            const points = 36;
+            for (let i = 0; i <= points; i++) {
+                const angle = (i / points) * Math.PI * 2;
+                const offset = Math.sin(angle * 6 + Date.now() * 0.005) * (5 + visualizerPulse * 12);
+                const r = radius + offset;
+                const x = cx + Math.cos(angle) * r;
+                const y = cy + Math.sin(angle) * r;
+                if (i === 0) visCtx.moveTo(x, y);
+                else visCtx.lineTo(x, y);
+            }
+            visCtx.closePath();
+            visCtx.stroke();
+            visCtx.restore();
+
+            if (visualizerPulse > 0) visualizerPulse -= 0.02;
+            requestAnimationFrame(renderVisualizer);
+        }
+        renderVisualizer();
+
+        /* ========================================================
+           6. SECURITY VAULT & SCRATCH CANVAS
+           ======================================================== */
+        let currentPasscode = "";
+
+        function pressKey(key) {
+            if (currentPasscode.length < 4) {
+                currentPasscode += key;
+                document.getElementById('passcodeDisplay').value = currentPasscode;
+                synthesizeChime(400 + currentPasscode.length * 100, 0.2);
+            }
+        }
+
+        function clearPasscode() {
+            currentPasscode = "";
+            document.getElementById('passcodeDisplay').value = "";
+        }
+
+        function verifyPasscode() {
+            if (currentPasscode === "1907") {
+                document.getElementById('vaultLockScreen').classList.add('hidden');
+                document.getElementById('vaultUnlockedContent').classList.remove('hidden');
+                initScratchCanvas();
+                synthesizeChime(600, 0.5);
+                setTimeout(() => synthesizeChime(800, 0.8), 200);
+            } else {
+                alert("Incorrect Keycode! Hint: 1907 (19 July)");
+                clearPasscode();
+            }
+        }
+
+        function initScratchCanvas() {
+            const sCanvas = document.getElementById('scratchCanvas');
+            const sCtx = sCanvas.getContext('2d');
+
+            sCtx.fillStyle = '#18102a';
+            sCtx.fillRect(0, 0, sCanvas.width, sCanvas.height);
+
+            sCtx.fillStyle = '#D4AF37';
+            for (let i = 0; i < 250; i++) {
+                sCtx.fillRect(Math.random() * sCanvas.width, Math.random() * sCanvas.height, 2, 2);
+            }
+
+            sCtx.font = 'bold 16px Space Grotesk';
+            sCtx.fillStyle = '#ffffff';
+            sCtx.textAlign = 'center';
+            sCtx.fillText('★ SCRATCH HERE TO UNVEIL SECRET LETTER ★', sCanvas.width / 2, sCanvas.height / 2);
+
+            let isScratching = false;
+
+            function scratch(x, y) {
+                sCtx.globalCompositeOperation = 'destination-out';
+                sCtx.beginPath();
+                sCtx.arc(x, y, 22, 0, Math.PI * 2);
+                sCtx.fill();
+            }
+
+            function getPos(e) {
+                const rect = sCanvas.getBoundingClientRect();
+                const clientX = e.touches ? e.touches[0].clientX : e.clientX;
+                const clientY = e.touches ? e.touches[0].clientY : e.clientY;
+                return {
+                    x: (clientX - rect.left) * (sCanvas.width / rect.width),
+                    y: (clientY - rect.top) * (sCanvas.height / rect.height)
+                };
+            }
+
+            sCanvas.addEventListener('mousedown', (e) => { isScratching = true; const p = getPos(e); scratch(p.x, p.y); });
+            sCanvas.addEventListener('mousemove', (e) => { if (isScratching) { const p = getPos(e); scratch(p.x, p.y); } });
+            window.addEventListener('mouseup', () => isScratching = false);
+
+            sCanvas.addEventListener('touchstart', (e) => { isScratching = true; const p = getPos(e); scratch(p.x, p.y); });
+            sCanvas.addEventListener('touchmove', (e) => { if (isScratching) { const p = getPos(e); scratch(p.x, p.y); } });
+            window.addEventListener('touchend', () => isScratching = false);
+        }
+
+        /* ========================================================
+           7. FORMAL TYPEWRITER LETTER MODAL & 3D ENVELOPE FIX
+           ======================================================== */
+        const letterText = "Dearest Ajar,\n\nAs we complete 4 months of engagement today, I want to thank you for bringing so much happiness, respect, and warmth into my life. These 122 days have proven that choosing you was the best decision of my life.\n\nHere's to celebrating many more milestones together!";
+        let typewriterIndex = 0;
+        let isTypingActive = false;
+
+        function open3DLetterModal() {
+            const modal = document.getElementById('envelopeModal');
+            const wrapper = document.getElementById('envelopeWrapper');
+            const instruction = document.getElementById('envelopeInstruction');
+            
+            modal.classList.remove('hidden');
+            wrapper.classList.remove('open');
+            instruction.innerText = "Click the Wax Seal to unseal the letter!";
+            
+            typewriterIndex = 0;
+            isTypingActive = false;
+            document.getElementById('typewriterLetterText').innerText = "Click wax seal to reveal text...";
+            
+            synthesizeChime(500, 0.3);
+        }
+
+        function close3DLetterModal() {
+            document.getElementById('envelopeModal').classList.add('hidden');
+            document.getElementById('envelopeWrapper').classList.remove('open');
+            isTypingActive = false;
+        }
+
+        function toggleEnvelope() {
+            const wrapper = document.getElementById('envelopeWrapper');
+            const instruction = document.getElementById('envelopeInstruction');
+            
+            if (!wrapper.classList.contains('open')) {
+                wrapper.classList.add('open');
+                instruction.innerText = "Letter Unsealed & Opened";
+                
+                synthesizeChime(400, 0.2);
+                setTimeout(() => synthesizeChime(700, 0.6), 250);
+
+                if (!isTypingActive) {
+                    isTypingActive = true;
+                    typewriterIndex = 0;
+                    document.getElementById('typewriterLetterText').innerText = "";
+                    setTimeout(typeWriterEffect, 600);
+                }
+            }
+        }
+
+        function typeWriterEffect() {
+            if (typewriterIndex < letterText.length && isTypingActive) {
+                document.getElementById('typewriterLetterText').innerText += letterText.charAt(typewriterIndex);
+                typewriterIndex++;
+                setTimeout(typeWriterEffect, 25);
+            }
+        }
+
+        /* ========================================================
+           8. STARLIGHT RUNNER MINI GAME
+           ======================================================== */
+        const rCanvas = document.getElementById('runnerCanvas');
+        const rCtx = rCanvas.getContext('2d');
+
+        let runnerScore = 0;
+        let isGameRunning = false;
+        let playerY = 200;
+        let playerVy = 0;
+        let isJumping = false;
+        let gameGems = [];
+        let animationFrameId = null;
+
+        function startRunnerGame() {
+            runnerScore = 0;
+            playerY = 200;
+            playerVy = 0;
+            isJumping = false;
+            gameGems = [
+                { x: 400, y: 190 },
+                { x: 600, y: 150 }
+            ];
+            isGameRunning = true;
+            document.getElementById('gameOverOverlay').classList.add('hidden');
+            document.getElementById('runnerScore').innerText = `Anniversary Gems: ${runnerScore} / 10`;
+            
+            if (animationFrameId) cancelAnimationFrame(animationFrameId);
+            runGameLoop();
+        }
+
+        function jump() {
+            if (!isJumping && isGameRunning) {
+                playerVy = -10;
+                isJumping = true;
+                synthesizeChime(500, 0.2);
+            }
+        }
+
+        rCanvas.addEventListener('click', jump);
+        rCanvas.addEventListener('touchstart', (e) => { e.preventDefault(); jump(); });
+
+        function runGameLoop() {
+            if (!isGameRunning) return;
+
+            rCtx.clearRect(0, 0, rCanvas.width, rCanvas.height);
+
+            rCtx.strokeStyle = 'rgba(212, 175, 55, 0.4)';
+            rCtx.lineWidth = 2;
+            rCtx.beginPath();
+            rCtx.moveTo(0, 220);
+            rCtx.lineTo(400, 220);
+            rCtx.stroke();
+
+            playerY += playerVy;
+            playerVy += 0.55;
+            if (playerY >= 200) {
+                playerY = 200;
+                playerVy = 0;
+                isJumping = false;
+            }
+
+            rCtx.fillStyle = '#FF2E93';
+            rCtx.font = '20px FontAwesome';
+            rCtx.fillText('♥', 50, playerY);
+
+            for (let i = gameGems.length - 1; i >= 0; i--) {
+                const g = gameGems[i];
+                g.x -= 3.5;
+
+                rCtx.fillStyle = '#D4AF37';
+                rCtx.font = '16px FontAwesome';
+                rCtx.fillText('◆', g.x, g.y);
+
+                if (Math.abs(g.x - 50) < 20 && Math.abs(g.y - playerY) < 20) {
+                    runnerScore++;
+                    document.getElementById('runnerScore').innerText = `Anniversary Gems: ${runnerScore} / 10`;
+                    synthesizeChime(700, 0.2);
+                    gameGems.splice(i, 1);
+                    gameGems.push({ x: 450 + Math.random() * 200, y: 140 + Math.random() * 60 });
+                } else if (g.x < -20) {
+                    gameGems.splice(i, 1);
+                    gameGems.push({ x: 450 + Math.random() * 200, y: 140 + Math.random() * 60 });
+                }
+            }
+
+            if (runnerScore >= 10) {
+                isGameRunning = false;
+                document.getElementById('finalScoreText').innerText = `Challenge Cleared! Gems Collected: ${runnerScore}`;
+                document.getElementById('gameOverOverlay').classList.remove('hidden');
+                synthesizeChime(880, 1.0);
+                return;
+            }
+
+            animationFrameId = requestAnimationFrame(runGameLoop);
+        }
+    </script>
+</body>
+</html>
